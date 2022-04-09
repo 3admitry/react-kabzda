@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+
 type accordionTitleProps ={
     title: string
     setColl: ()=>void
@@ -37,6 +38,7 @@ const AccordionTitle = (props:accordionTitleProps) => {
         </div>
     );
 };
+
 const AccordionBody = () => {
     return (
         <ul>

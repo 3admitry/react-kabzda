@@ -11,13 +11,13 @@ export default {
 
 const Template: ComponentStory<typeof Accordion> = (args) =>  <Accordion {...args} />
 
-export const MenuCollapsed = Template.bind({})
+/*export const MenuCollapsed = Template.bind({})
 
 MenuCollapsed.args = {
     collapsed: true,
-}
+}*/
 
-export const MenuCollapsed2 = () => {
+export const MenuCollapsed = () => {
 
     let [collapsed, setCollapsed] = useState(true)
 
