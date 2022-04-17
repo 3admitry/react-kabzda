@@ -6,12 +6,23 @@
 </head>
 <body>
 <script>
-    let a = '1 2 3 4 5'
+    let a = 'RqaEzty';
     console.log(a)
 
-   const x = str => Math.max( ...str.split(' ') )+' '+Math.min( ...str.split(' ') )
 
-    console.log(x(a));
+    /*accum("abcd") -> "A-Bb-Ccc-Dddd"
+    accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+    accum("cwAt") -> "C-Ww-Aaa-Tttt"*/
+
+
+    const accum = s => s.split('').map((el, i) => {
+        return el.toUpperCase() + el.repeat(i).toLowerCase()
+    }).join('-');
+
+
+    console.log(accum(a));
+
+
 </script>
 </body>
 </html>
