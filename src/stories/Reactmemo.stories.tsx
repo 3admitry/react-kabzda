@@ -31,7 +31,6 @@ export const Example1 = () => {
         </>
 
     )
-
 }
 
 
