@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 import buttonStories from './Button.stories';
 
@@ -7,6 +7,7 @@ export default {
     title: 'UseMemo demo',
 }
 
+//////////////////////////////// useMemo
 
 export const DifficultCounting = () => {
 
@@ -60,6 +61,8 @@ export const DifficultCounting = () => {
 
 }
 
+//////////////////////////////// useMemo для помощи react.Memo
+
 const Counter = (props: { count: number }) => {
     console.log('Counter');
     return <div>{props.count}</div>
@@ -73,6 +76,7 @@ const UsersSecret = (props: { users: Array<string> }) => {
 
 const Users = React.memo(UsersSecret);
 
+// ПРОВЕРЯЙ результат в консоле ! при вызове каунтера не отрисовывается UsersSecret
 export const useMemoHelpReactMemo = () => {
     let [count, setCounter] = useState(0);
     let [users, setUsers] = useState(['Dima', 'Miron', 'Darina']);
@@ -98,6 +102,51 @@ export const useMemoHelpReactMemo = () => {
 
     )
 }
+
+
+//////////////////////////////// use Callback
+
+const Counter2 = (props: { count: number }) => {
+    console.log('Counter');
+    return <div>{props.count}</div>
+}
+
+type BooksType = {
+    addBook: ()=>void
+}
+
+const BooksSecret = (props: BooksType) => {
+    console.log('BooksSecret');
+    return <div>
+        <button onClick={()=>{props.addBook()}}>addBook</button>
+    </div>
+}
+const Books = React.memo(BooksSecret);
+
+
+
+export const LikeUseCallback = () => {
+    let [count, setCounter] = useState(0);
+    let [books, setBooks] = useState(['React', 'JS', 'CSS', 'HTML']);
+
+
+    // При помощи useMemo мы помогаем React.Memo отслеживать изменение по входящим пропсам
+
+    const memoiziedBooks = useCallback(()=>{
+            setBooks([...books, 'Angular']);
+    }, [books])
+
+    return (
+        <>
+            <button onClick={() => (setCounter(count + 1))}>++</button>
+            <Counter2 count={count}/>
+            <Books addBook={memoiziedBooks}/>
+        </>
+
+    )
+}
+
+
 
 
 
