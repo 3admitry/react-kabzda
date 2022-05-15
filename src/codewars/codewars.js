@@ -1,10 +1,11 @@
-let a = 'Hello';
-console.log(a)
+let names = ['Alex', 'Jacob', 'Mark', 'Max'];
+console.log(`${names[0]}, ${names[0]} and ${names.length-2} others like this`)
+
+function arrayDiff(a, b) {
 
 
-function digital_root(str) {
-    return str.reverse
+
 }
 
 
-console.log(digital_root(a));
+// console.log(arrayDiff([1, 2, 2, 2, 3], [2]));
